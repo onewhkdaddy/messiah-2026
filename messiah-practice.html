@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>2026 메시아 연습실</title>
+<style>
+:root {
+  --site-primary: #26364A;
+  --site-on-primary: #FFFFFF;
+  --site-secondary: #B99A61;
+  --site-on-secondary: #172333;
+  --site-background: #F3F1EC;
+  --site-on-background: #202A35;
+  --site-font-body: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  --site-font-heading: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  --surface: light-dark(#FFFFFF, #1C2632);
+  --surface-soft: light-dark(#F7F5F0, #253241);
+  --text-muted: light-dark(#697482, #B5C0CC);
+  --line: light-dark(#E5E0D6, #3A4858);
+  --accent-soft: light-dark(#F1E9D9, #394252);
+}
+* { box-sizing: border-box; }
+html { background: var(--site-background); }
+body {
+  margin: 0;
+  color: var(--site-on-background);
+  background: var(--site-background);
+  font-family: var(--site-font-body);
+  line-height: 1.55;
+}
+button, input { font: inherit; }
+#app {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--site-background);
+  color: var(--site-on-background);
+  border-radius: 0;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--site-on-primary);
+  background: var(--site-primary);
+  padding: calc(42px * var(--site-spacing-scale)) max(22px, calc((100vw - 980px) / 2));
+}
+.hero:after {
+  content: "MESSIAH";
+  position: absolute;
+  right: 4%;
+  bottom: -32px;
+  color: var(--site-secondary);
+  opacity: calc(.10 * var(--site-decoration-opacity));
+  font-family: Georgia, serif;
+  font-size: clamp(70px, 15vw, 170px);
+  letter-spacing: .06em;
+  pointer-events: none;
+}
+.hero-inner { max-width: 980px; margin: auto; position: relative; z-index: 1; }
+.eyebrow { color: #DCC79D; font-size: 11px; font-weight: 800; letter-spacing: .2em; }
+.hero h1 {
+  margin: 10px 0 2px;
+  font-family: var(--site-font-heading);
+  font-size: calc(clamp(30px, 6vw, 52px) * var(--site-heading-scale));
+  line-height: 1.12;
+  letter-spacing: -.04em;
+}
+.hero .ko-title { color: #E3C98F; font-size: 19px; font-weight: 650; margin-top: 8px; }
+.hero .motto { color: #D7DEE6; font-size: 13px; margin-top: 18px; }
+main { max-width: 980px; margin: auto; padding: 26px 20px 56px; }
+.intro { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:20px; }
+.intro h2 { font-size: calc(23px * var(--site-heading-scale)); margin:0; letter-spacing:-.03em; }
+.intro p { color:var(--text-muted); font-size:13px; margin:5px 0 0; }
+.count { color:var(--site-primary); background:var(--accent-soft); border:1px solid var(--line); border-radius:999px; padding:7px 12px; white-space:nowrap; font-size:12px; font-weight:750; }
+.controls {
+  display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+  background:var(--surface); border:1px solid var(--line); border-radius:16px;
+  padding:13px; margin-bottom:18px;
+}
+.search-wrap { flex:1 1 190px; position:relative; }
+.search-wrap span { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); }
+.search-wrap input {
+  width:100%; border:1px solid var(--line); border-radius:10px; padding:10px 12px 10px 36px;
+  background:var(--surface-soft); color:var(--site-on-background); outline:none;
+}
+.search-wrap input:focus { border-color:var(--site-secondary); box-shadow:0 0 0 3px color-mix(in srgb, var(--site-secondary) 20%, transparent); }
+.filters { display:flex; gap:6px; flex-wrap:wrap; }
+.filter {
+  border:1px solid var(--line); background:var(--surface); color:var(--site-on-background);
+  border-radius:10px; padding:9px 12px; cursor:pointer; font-size:13px; font-weight:700;
+}
+.filter[aria-pressed="true"] { background:var(--site-primary); color:var(--site-on-primary); border-color:var(--site-primary); }
+.song-list { display:grid; gap:12px; }
+.song {
+  background:var(--surface); border:1px solid var(--line); border-radius:16px;
+  padding:17px 18px; display:grid; grid-template-columns:54px minmax(0,1fr); gap:14px;
+  box-shadow:0 3px 14px rgba(20,30,40,.035);
+}
+.song-number {
+  width:50px; height:50px; border-radius:13px; display:grid; place-items:center;
+  color:var(--site-on-secondary); background:var(--site-secondary);
+  font-family:Georgia,serif; font-size:20px; font-weight:700;
+}
+.song-main { min-width:0; }
+.song-heading { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+.song h3 { font-size:17px; margin:1px 0 3px; line-height:1.35; letter-spacing:-.025em; }
+.song-meta { color:var(--text-muted); font-size:11px; }
+.part-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; margin-top:13px; }
+.part-link {
+  text-decoration:none; display:flex; justify-content:center; align-items:center; gap:6px;
+  min-height:42px; border-radius:10px; border:1px solid var(--line);
+  background:var(--surface-soft); color:var(--site-on-background); font-size:13px; font-weight:750;
+  transition:transform .15s, border-color .15s, background .15s;
+}
+.part-link:hover { transform:translateY(-1px); border-color:var(--site-secondary); background:var(--accent-soft); }
+.part-link small { color:var(--text-muted); font-size:10px; font-weight:500; }
+.empty { display:none; padding:35px 18px; text-align:center; background:var(--surface); border:1px dashed var(--line); border-radius:15px; color:var(--text-muted); }
+.notice { margin-top:22px; padding:14px 16px; border-left:3px solid var(--site-secondary); background:var(--surface-soft); color:var(--text-muted); font-size:12px; border-radius:0 10px 10px 0; }
+footer { text-align:center; color:var(--text-muted); font-size:11px; padding:18px 20px 30px; }
+@media (max-width:600px) {
+  .hero { padding:34px 20px 32px; }
+  main { padding:22px 14px 42px; }
+  .intro { align-items:flex-start; flex-direction:column; gap:10px; }
+  .controls { padding:10px; }
+  .filters { width:100%; display:grid; grid-template-columns:repeat(5,1fr); }
+  .filter { padding:9px 4px; }
+  .song { padding:14px 12px; grid-template-columns:43px minmax(0,1fr); gap:10px; }
+  .song-number { width:42px; height:44px; font-size:18px; }
+  .song h3 { font-size:15px; }
+  .part-grid { gap:5px; }
+  .part-link { min-height:40px; font-size:12px; }
+}
+@media (prefers-reduced-motion:reduce) { * { transition:none !important; } }
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">NAMSEOUL EUNHYE CHURCH · 2026 CHRISTMAS</div>
+      <h1>HANDEL'S MESSIAH</h1>
+      <div class="ko-title">메시아 음악예배 연습실</div>
+      <div class="motto">30+1 · 다시 함께 드리는 찬양의 고백</div>
+    </div>
+  </header>
+  <main>
+    <section class="intro">
+      <div>
+        <h2>연습곡 목록</h2>
+        <p>곡을 선택하고 자신의 파트를 눌러 연습을 시작하세요.</p>
+      </div>
+      <div class="count" id="count">전체 7곡</div>
+    </section>
+    <section class="controls" aria-label="연습곡 검색 및 파트 필터">
+      <label class="search-wrap">
+        <span aria-hidden="true">⌕</span>
+        <input id="search" type="search" placeholder="곡 번호 또는 곡명 검색" aria-label="곡 검색">
+      </label>
+      <div class="filters" role="group" aria-label="파트 선택">
+        <button class="filter" data-part="ALL" aria-pressed="true">전체</button>
+        <button class="filter" data-part="S" aria-pressed="false">소프라노</button>
+        <button class="filter" data-part="A" aria-pressed="false">알토</button>
+        <button class="filter" data-part="T" aria-pressed="false">테너</button>
+        <button class="filter" data-part="B" aria-pressed="false">베이스</button>
+      </div>
+    </section>
+    <section class="song-list" id="songList" aria-live="polite"></section>
+    <div class="empty" id="empty">검색 결과가 없습니다. 다른 곡명이나 파트를 선택해 주세요.</div>
+    <aside class="notice">
+      <strong>연습 안내</strong><br>
+      각 파트 버튼을 누르면 해당 곡의 외부 연습자료 페이지가 새 창으로 열립니다.
+      전체 합창 영상과 악보 자료는 준비되는 대로 추가할 수 있습니다.
+    </aside>
+  </main>
+  <footer>HANDEL · MESSIAH · 2026 MUSIC WORSHIP</footer>
+</div>
+<script>
+const songs = [{"number": 4, "title": "주의 영광", "parts": {"S": "https://joongangart.kr/Handel_Messiah/01/pop1.html", "A": "https://joongangart.kr/Handel_Messiah/01/pop2.html", "T": "https://joongangart.kr/Handel_Messiah/01/pop3.html", "B": "https://joongangart.kr/Handel_Messiah/01/pop4.html"}}, {"number": 7, "title": "정결케 하리라", "parts": {"S": "https://joongangart.kr/Handel_Messiah/02/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/02/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/02/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/02/pop5.html"}}, {"number": 9, "title": "오 기쁜 소식을 시온에 전하는 자여", "parts": {"S": "https://joongangart.kr/Handel_Messiah/03/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/03/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/03/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/03/pop5.html"}}, {"number": 12, "title": "우리를 위해 나셨다", "parts": {"S": "https://joongangart.kr/Handel_Messiah/04/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/04/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/04/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/04/pop5.html"}}, {"number": 17, "title": "높은 곳에 하나님께 영광", "parts": {"S": "https://joongangart.kr/Handel_Messiah/05/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/05/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/05/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/05/pop5.html"}}, {"number": 44, "title": "할렐루야", "parts": {"S": "https://joongangart.kr/Handel_Messiah/17/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/17/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/17/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/17/pop5.html"}}, {"number": 53, "title": "죽임당하신 어린양", "parts": {"S": "https://joongangart.kr/Handel_Messiah/20/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/20/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/20/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/20/pop5.html"}}];
+const partNames = {S:"소프라노", A:"알토", T:"테너", B:"베이스"};
+let selectedPart = "ALL";
+const list = document.getElementById("songList");
+const search = document.getElementById("search");
+const count = document.getElementById("count");
+const empty = document.getElementById("empty");
+
+function render() {
+  const q = search.value.trim().toLocaleLowerCase("ko");
+  const filtered = songs.filter(song =>
+    (selectedPart === "ALL" || song.parts[selectedPart]) &&
+    (String(song.number).includes(q) || song.title.toLocaleLowerCase("ko").includes(q))
+  );
+  list.innerHTML = filtered.map(song => {
+    const keys = selectedPart === "ALL" ? ["S","A","T","B"] : [selectedPart];
+    const links = keys.filter(k => song.parts[k]).map(k =>
+      `<a class="part-link" href="${song.parts[k]}" target="_blank" rel="noopener noreferrer" aria-label="${song.title} ${partNames[k]} 연습자료 열기">${k}<small>${partNames[k]}</small></a>`
+    ).join("");
+    return `<article class="song">
+      <div class="song-number">${String(song.number).padStart(2,"0")}</div>
+      <div class="song-main">
+        <div class="song-heading">
+          <div>
+            <h3>${song.title}</h3>
+            <div class="song-meta">MESSIAH · 합창곡 ${String(song.number).padStart(2,"0")}</div>
+          </div>
+        </div>
+        <div class="part-grid">${links}</div>
+      </div>
+    </article>`;
+  }).join("");
+  count.textContent = selectedPart === "ALL"
+    ? `전체 ${filtered.length}곡`
+    : `${partNames[selectedPart]} · ${filtered.length}곡`;
+  empty.style.display = filtered.length ? "none" : "block";
+}
+document.querySelectorAll(".filter").forEach(button => {
+  button.addEventListener("click", () => {
+    selectedPart = button.dataset.part;
+    document.querySelectorAll(".filter").forEach(b => b.setAttribute("aria-pressed", String(b === button)));
+    render();
+  });
+});
+search.addEventListener("input", render);
+render();
+</script>
+</body>
+</html>
