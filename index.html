@@ -147,6 +147,70 @@ footer { text-align:center; color:var(--text-muted); font-size:11px; padding:18p
   .notice { margin-top:10px; padding:8px 10px; }
 }
 @media (prefers-reduced-motion:reduce) { * { transition:none !important; } }
+  /* 연습 일정표 디자인 */
+.schedule-table-wrap {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+  font-size: 13px;
+}
+
+.schedule-table th {
+  padding: 12px 10px;
+  color: white;
+  background: #26364A;
+  text-align: center;
+  font-weight: 800;
+}
+
+.schedule-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.schedule-table tbody tr:nth-child(even) {
+  background: var(--surface-soft);
+}
+
+.schedule-table .date-cell {
+  color: #26364A;
+  font-weight: 850;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.schedule-table .time-cell {
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.schedule-table .highlight {
+  color: #9B793F;
+  font-weight: 850;
+}
+
+.schedule-table .subline {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.schedule-note {
+  margin-top: 9px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
 </style>
 </head>
 <body>
@@ -186,78 +250,98 @@ footer { text-align:center; color:var(--text-muted); font-size:11px; padding:18p
       <strong>연습 안내</strong><br>
       각 파트 버튼을 누르면 해당 곡의 외부 연습자료 페이지가 새 창으로 열립니다.
     </aside>
-    <section class="schedule" aria-labelledby="scheduleTitle">
+<section class="schedule" aria-labelledby="scheduleTitle">
   <h2 id="scheduleTitle">2026년 메시아 연합찬양 연습 일정표</h2>
-  <p class="schedule-lead">함께 준비하고, 한마음으로 찬양을 올려 드리는 여정입니다.</p>
+  <p class="schedule-lead">
+    함께 준비하고, 한마음으로 찬양을 올려 드리는 여정입니다.
+  </p>
 
-  <article class="schedule-card">
-    <h3>토요일 정기 연습 <span>총 5주 · 11/21–12/19</span></h3>
-    <div class="schedule-body">
-      <div class="schedule-row">
-        <div class="schedule-time">연습 날짜</div>
-        <div class="schedule-detail"><strong>11/21(토), 11/28(토), 12/5(토), 12/12(토), 12/19(토)</strong></div>
-      </div>
-      <div class="schedule-row">
-        <div class="schedule-time">15:00–16:00</div>
-        <div class="schedule-detail">파트 연습</div>
-      </div>
-      <div class="room-grid">
-        <div class="room-item"><strong>소프라노</strong>도산홀</div>
-        <div class="room-item"><strong>알토</strong>일가홀</div>
-        <div class="room-item"><strong>테너</strong>신관 301호</div>
-        <div class="room-item"><strong>베이스</strong>신관 303호</div>
-      </div>
-      <div class="schedule-row">
-        <div class="schedule-time">16:00–16:30</div>
-        <div class="schedule-detail">휴식 및 광고</div>
-      </div>
-      <div class="schedule-row">
-        <div class="schedule-time">16:30–18:00</div>
-        <div class="schedule-detail">전체 연습 · <strong>도산홀</strong></div>
-      </div>
-    </div>
-  </article>
+  <div class="schedule-table-wrap">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>날짜</th>
+          <th>시간</th>
+          <th>내용</th>
+          <th>장소</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="date-cell" rowspan="3">
+            토요일 정기 연습
+            <span class="subline">
+              11/21 · 11/28<br>
+              12/5 · 12/12 · 12/19
+            </span>
+          </td>
+          <td class="time-cell">15:00–16:00</td>
+          <td>
+            <strong class="highlight">파트 연습</strong>
+            <span class="subline">
+              소프라노 · 알토 · 테너 · 베이스
+            </span>
+          </td>
+          <td>
+            소프라노: 도산홀<br>
+            알토: 일가홀<br>
+            테너: 신관 301호<br>
+            베이스: 신관 303호
+          </td>
+        </tr>
+        <tr>
+          <td class="time-cell">16:00–16:30</td>
+          <td>휴식 및 광고</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="time-cell">16:30–18:00</td>
+          <td><strong class="highlight">전체 연습</strong></td>
+          <td>도산홀</td>
+        </tr>
 
-  <article class="schedule-card">
-    <h3>12월 23일(수) <span>전체 연습</span></h3>
-    <div class="schedule-body">
-      <div class="schedule-row">
-        <div class="schedule-time">18:00부터</div>
-        <div class="schedule-detail">저녁 김밥 제공</div>
-      </div>
-      <div class="schedule-row">
-        <div class="schedule-time">19:00부터</div>
-        <div class="schedule-detail">전체 연습 · <strong>도산홀</strong></div>
-      </div>
-    </div>
-  </article>
+        <tr>
+          <td class="date-cell" rowspan="2">12/23(수)</td>
+          <td class="time-cell">18:00</td>
+          <td>저녁 김밥 제공</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="time-cell">19:00</td>
+          <td><strong class="highlight">전체 연습</strong></td>
+          <td>도산홀</td>
+        </tr>
 
-  <article class="schedule-card">
-    <h3>12월 24일(목) <span>전체 연습 및 오케스트라 리허설</span></h3>
-    <div class="schedule-body">
-      <div class="schedule-row">
-        <div class="schedule-time">17:30부터</div>
-        <div class="schedule-detail">오케스트라 리허설 · <strong>세라믹팰리스홀</strong></div>
-      </div>
-      <div class="schedule-row">
-        <div class="schedule-time">18:00부터</div>
-        <div class="schedule-detail">저녁 김밥 제공</div>
-      </div>
-      <div class="schedule-row">
-        <div class="schedule-time">19:00부터</div>
-        <div class="schedule-detail">전체 연습 · <strong>세라믹팰리스홀</strong></div>
-      </div>
-    </div>
-  </article>
-  <article class="schedule-card">
-    <h3>12월 25일(금) <span>성탄 감사 예배 당일</span></h3>
-    <div class="schedule-body">
-      <div class="schedule-row">
-        <div class="schedule-time">08:30–09:30</div>
-        <div class="schedule-detail">전체 리허설 · <strong>세라믹팰리스홀</strong></div>
-      </div>
-    </div>
-  </article>
+        <tr>
+          <td class="date-cell" rowspan="3">12/24(목)</td>
+          <td class="time-cell">17:30</td>
+          <td>오케스트라 리허설</td>
+          <td>세라믹팰리스홀</td>
+        </tr>
+        <tr>
+          <td class="time-cell">18:00</td>
+          <td>저녁 김밥 제공</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="time-cell">19:00</td>
+          <td><strong class="highlight">전체 연습</strong></td>
+          <td>세라믹팰리스홀</td>
+        </tr>
+
+        <tr>
+          <td class="date-cell">12/25(금)</td>
+          <td class="time-cell">08:30–09:30</td>
+          <td><strong class="highlight">성탄 감사 예배 당일 전체 리허설</strong></td>
+          <td>세라믹팰리스홀</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="schedule-note">
+    ※ 모바일에서는 표를 좌우로 밀어 전체 내용을 확인할 수 있습니다.
+  </p>
 </section>
   </main>
   <footer>HANDEL · MESSIAH · 2026 MUSIC WORSHIP</footer>
