@@ -148,69 +148,16 @@ footer { text-align:center; color:var(--text-muted); font-size:11px; padding:18p
 }
 @media (prefers-reduced-motion:reduce) { * { transition:none !important; } }
   /* 연습 일정표 디자인 */
-.schedule-table-wrap {
-  overflow-x: auto;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-}
-
-.schedule-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 620px;
-  font-size: 13px;
-}
-
-.schedule-table th {
-  padding: 12px 10px;
-  color: white;
-  background: #26364A;
-  text-align: center;
-  font-weight: 800;
-}
-
-.schedule-table td {
-  padding: 12px 10px;
-  border-bottom: 1px solid var(--line);
-  vertical-align: middle;
-}
-
-.schedule-table tbody tr:nth-child(even) {
-  background: var(--surface-soft);
-}
-
-.schedule-table .date-cell {
-  color: #26364A;
-  font-weight: 850;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.schedule-table .time-cell {
-  font-weight: 800;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.schedule-table .highlight {
-  color: #9B793F;
-  font-weight: 850;
-}
-
-.schedule-table .subline {
-  display: block;
-  margin-top: 4px;
-  color: var(--text-muted);
-  font-size: 11px;
-  line-height: 1.6;
-}
-
-.schedule-note {
-  margin-top: 9px;
-  color: var(--text-muted);
-  font-size: 12px;
-}
+.schedule-table-wrap {overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px;}
+.schedule-table {width: 100%;border-collapse: collapse; min-width: 620px; font-size: 13px;}
+.schedule-table th {padding: 12px 10px; color: white; background: #26364A; text-align: center; font-weight: 800;}
+.schedule-table td {padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: middle;}
+.schedule-table tbody tr:nth-child(even) {background: var(--surface-soft);}
+.schedule-table .date-cell {color: #26364A; font-weight: 850; text-align: center; white-space: nowrap;}
+.schedule-table .time-cell {font-weight: 800; text-align: center; white-space: nowrap;}
+.schedule-table .highlight {color: #9B793F; font-weight: 850;}
+.schedule-table .subline {display: block; margin-top: 4px; color: var(--text-muted);font-size: 11px;line-height: 1.6;}
+.schedule-note {margin-top: 9px; color: var(--text-muted); font-size: 12px;}
 </style>
 </head>
 <body>
