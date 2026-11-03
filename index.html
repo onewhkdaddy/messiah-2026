@@ -31,10 +31,10 @@ body {
   margin: 0;
   color: var(--site-on-background);
   background: var(--site-background);
-  -family: var(--site--body);
-  line-height: 1.55;
+  font-family: var(--site-font-body);
+  line-height: 1.4;
 }
-button, input { : inherit; }
+button, input { font: inherit; }
 #app {
   min-height: 100vh;
   width: 100%;
@@ -47,7 +47,7 @@ button, input { : inherit; }
   overflow: hidden;
   color: var(--site-on-primary);
   background: var(--site-primary);
-  padding: calc(42px * var(--site-spacing-scale)) max(22px, calc((100vw - 980px) / 2));
+  padding: calc(26px * var(--site-spacing-scale)) max(22px, calc((100vw - 980px) / 2));
 }
 .hero:after {
   content: "MESSIAH";
@@ -56,31 +56,31 @@ button, input { : inherit; }
   bottom: -32px;
   color: var(--site-secondary);
   opacity: calc(.10 * var(--site-decoration-opacity));
-  -family: Georgia, serif;
-  -size: clamp(70px, 15vw, 170px);
+  font-family: Georgia, serif;
+  font-size: clamp(70px, 15vw, 170px);
   letter-spacing: .06em;
   pointer-events: none;
 }
 .hero-inner { max-width: 980px; margin: auto; position: relative; z-index: 1; }
-.eyebrow { color: #DCC79D; -size: 11px; -weight: 800; letter-spacing: .2em; }
+.eyebrow { color: #DCC79D; font-size: 11px; font-weight: 800; letter-spacing: .2em; }
 .hero h1 {
   margin: 10px 0 2px;
-  -family: var(--site--heading);
-  -size: calc(clamp(30px, 6vw, 52px) * var(--site-heading-scale));
+  font-family: var(--site-font-heading);
+  font-size: calc(clamp(30px, 6vw, 52px) * var(--site-heading-scale));
   line-height: 1.12;
   letter-spacing: -.04em;
 }
-.hero .ko-title { color: #E3C98F; -size: 19px; -weight: 650; margin-top: 8px; }
-.hero .motto { color: #D7DEE6; -size: 13px; margin-top: 18px; }
-main { max-width: 980px; margin: auto; padding: 26px 20px 56px; }
-.intro { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:20px; }
-.intro h2 { -size: calc(23px * var(--site-heading-scale)); margin:0; letter-spacing:-.03em; }
-.intro p { color:var(--text-muted); -size:13px; margin:5px 0 0; }
-.count { color:var(--site-primary); background:var(--accent-soft); border:1px solid var(--line); border-radius:999px; padding:7px 12px; white-space:nowrap; -size:12px; -weight:750; }
+.hero .ko-title { color: #E3C98F; font-size: 19px; font-weight: 650; margin-top: 8px; }
+.hero .motto { color: #D7DEE6; font-size: 13px; margin-top: 10px; }
+main { max-width: 980px; margin: auto; padding: 18px 20px 40px; }
+.intro { display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom:12px; }
+.intro h2 { font-size: calc(23px * var(--site-heading-scale)); margin:0; letter-spacing:-.03em; }
+.intro p { color:var(--text-muted); font-size:13px; margin:5px 0 0; }
+.count { color:var(--site-primary); background:var(--accent-soft); border:1px solid var(--line); border-radius:999px; padding:7px 12px; white-space:nowrap; font-size:12px; font-weight:750; }
 .controls {
   display:flex; flex-wrap:wrap; align-items:center; gap:10px;
   background:var(--surface); border:1px solid var(--line); border-radius:16px;
-  padding:13px; margin-bottom:18px;
+  padding:9px; margin-bottom:12px;
 }
 .search-wrap { flex:1 1 190px; position:relative; }
 .search-wrap span { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); }
@@ -92,48 +92,59 @@ main { max-width: 980px; margin: auto; padding: 26px 20px 56px; }
 .filters { display:flex; gap:6px; flex-wrap:wrap; }
 .filter {
   border:1px solid var(--line); background:var(--surface); color:var(--site-on-background);
-  border-radius:10px; padding:9px 12px; cursor:pointer; -size:13px; -weight:700;
+  border-radius:10px; padding:8px 10px; cursor:pointer; font-size:14px; font-weight:800;
 }
 .filter[aria-pressed="true"] { background:var(--site-primary); color:var(--site-on-primary); border-color:var(--site-primary); }
-.song-list { display:grid; gap:12px; }
+.song-list { display:grid; gap:8px; }
 .song {
   background:var(--surface); border:1px solid var(--line); border-radius:16px;
-  padding:17px 18px; display:grid; grid-template-columns:54px minmax(0,1fr); gap:14px;
+  padding:10px 12px; display:grid; grid-template-columns:46px minmax(0,1fr); gap:10px;
   box-shadow:0 3px 14px rgba(20,30,40,.035);
 }
 .song-number {
-  width:50px; height:50px; border-radius:13px; display:grid; place-items:center;
+  width:44px; height:44px; border-radius:11px; display:grid; place-items:center;
   color:var(--site-on-secondary); background:var(--site-secondary);
-  -family:Georgia,serif; font-size:20px; font-weight:700;
+  font-family:Georgia,serif; font-size:20px; font-weight:700;
 }
 .song-main { min-width:0; }
-.song-heading { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
-.song h3 { font-size:17px; margin:1px 0 3px; line-height:1.35; letter-spacing:-.025em; }
-.song-meta { color:var(--text-muted); font-size:11px; }
-.part-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; margin-top:13px; }
+.song-heading { display:flex; justify-content:space-between; gap:8px; align-items:center; }
+.song h3 { font-size:17px; margin:0; line-height:1.25; letter-spacing:-.025em; }
+.song-meta { color:var(--text-muted); font-size:11px; white-space:nowrap; }
+.part-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; margin-top:8px; }
 .part-link {
   text-decoration:none; display:flex; justify-content:center; align-items:center; gap:6px;
-  min-height:42px; border-radius:10px; border:1px solid var(--line);
-  background:var(--surface-soft); color:var(--site-on-background); font-size:13px; font-weight:750;
+  min-height:40px; border-radius:9px; border:1px solid var(--line);
+  background:var(--surface-soft); color:var(--site-on-background); font-size:14px; font-weight:850;
   transition:transform .15s, border-color .15s, background .15s;
 }
 .part-link:hover { transform:translateY(-1px); border-color:var(--site-secondary); background:var(--accent-soft); }
-.part-link small { color:var(--text-muted); font-size:10px; font-weight:500; }
+.part-link small { color:var(--text-muted); font-size:11px; font-weight:700; }
 .empty { display:none; padding:35px 18px; text-align:center; background:var(--surface); border:1px dashed var(--line); border-radius:15px; color:var(--text-muted); }
-.notice { margin-top:22px; padding:14px 16px; border-left:3px solid var(--site-secondary); background:var(--surface-soft); color:var(--text-muted); font-size:12px; border-radius:0 10px 10px 0; }
+.notice { margin-top:14px; padding:10px 12px; border-left:3px solid var(--site-secondary); background:var(--surface-soft); color:var(--text-muted); font-size:12px; border-radius:0 10px 10px 0; }
 footer { text-align:center; color:var(--text-muted); font-size:11px; padding:18px 20px 30px; }
 @media (max-width:600px) {
-  .hero { padding:34px 20px 32px; }
-  main { padding:22px 14px 42px; }
-  .intro { align-items:flex-start; flex-direction:column; gap:10px; }
-  .controls { padding:10px; }
-  .filters { width:100%; display:grid; grid-template-columns:repeat(5,1fr); }
-  .filter { padding:9px 4px; }
-  .song { padding:14px 12px; grid-template-columns:43px minmax(0,1fr); gap:10px; }
-  .song-number { width:40px; height:40px; font-size:20px; }
-  .song h3 { font-size:18px; }
-  .part-grid { gap:5px; }
-  .part-link { min-height:20px; font-size:14px; }
+  .hero { padding:20px 16px 18px; }
+  .hero h1 { font-size:clamp(27px, 8vw, 38px); }
+  .hero .ko-title { font-size:17px; margin-top:5px; }
+  main { padding:12px 10px 30px; }
+  .intro { align-items:center; gap:6px; margin-bottom:8px; }
+  .intro h2 { font-size:20px; }
+  .intro p { font-size:12px; margin-top:2px; }
+  .count { padding:5px 9px; font-size:11px; }
+  .controls { position:sticky; top:0; z-index:20; gap:7px; padding:7px; margin:0 -1px 9px; border-radius:11px; box-shadow:0 3px 10px rgba(20,30,40,.08); }
+  .search-wrap { flex:1 1 100%; }
+  .search-wrap input { padding-top:8px; padding-bottom:8px; }
+  .filters { width:100%; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:5px; }
+  .filter { padding:7px 2px; font-size:13px; border-radius:8px; }
+  .song { padding:8px 9px; grid-template-columns:36px minmax(0,1fr); gap:8px; border-radius:11px; }
+  .song-number { width:34px; height:36px; font-size:16px; }
+  .song-heading { flex-wrap:wrap; gap:1px 6px; }
+  .song h3 { font-size:15px; }
+  .song-meta { font-size:10px; }
+  .part-grid { gap:4px; margin-top:6px; }
+  .part-link { min-height:38px; font-size:14px; gap:3px; }
+  .part-link small { font-size:10px; }
+  .notice { margin-top:10px; padding:8px 10px; }
 }
 @media (prefers-reduced-motion:reduce) { * { transition:none !important; } }
 </style>
@@ -142,7 +153,7 @@ footer { text-align:center; color:var(--text-muted); font-size:11px; padding:18p
 <div id="app">
   <header class="hero">
     <div class="hero-inner">
-      <div class="eyebrow">NAMSEOUL GRACE CHURCH · 2026 CHRISTMAS</div>
+  <div class="eyebrow">NAMSEOUL GRACE CHURCH · 2026 CHRISTMAS</div>
       <h1>HANDEL'S MESSIAH</h1>
       <div class="ko-title">메시아 음악예배 연습실</div>
       <div class="motto">30+1 · 다시 함께 드리는 찬양의 고백</div>
